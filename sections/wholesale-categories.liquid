@@ -1,0 +1,219 @@
+{%- style -%}
+  .wholesale-categories {
+    padding: 6rem 0;
+  }
+  .wholesale-categories__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .wholesale-categories__title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+    letter-spacing: -0.01em;
+  }
+  .wholesale-categories__subtitle {
+    font-size: 1.5rem;
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .wholesale-categories__grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  .wholesale-category-card {
+    position: relative;
+    overflow: hidden;
+    border-radius: 4px;
+    background: #f5f5f5;
+    text-decoration: none;
+    color: inherit;
+    display: block;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .wholesale-category-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  }
+  .wholesale-category-card__image {
+    aspect-ratio: 4/3;
+    overflow: hidden;
+    background: #e8e8e8;
+    position: relative;
+  }
+  .wholesale-category-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+  }
+  .wholesale-category-card:hover .wholesale-category-card__image img {
+    transform: scale(1.05);
+  }
+  .wholesale-category-card__brand {
+    position: absolute;
+    bottom: 12px;
+    right: 12px;
+    background: rgba(26, 31, 46, 0.75);
+    backdrop-filter: blur(4px);
+    -webkit-backdrop-filter: blur(4px);
+    padding: 4px 12px;
+    border-radius: 3px;
+    z-index: 2;
+  }
+  .wholesale-category-card__brand img {
+    height: 20px;
+    width: auto;
+    display: block;
+    object-fit: contain;
+  }
+  .wholesale-category-card__content {
+    padding: 2rem;
+  }
+  .wholesale-category-card__name {
+    font-size: 1.8rem;
+    font-weight: 700;
+    margin: 0 0 0.5rem;
+  }
+  .wholesale-category-card__desc {
+    font-size: 1.3rem;
+    opacity: 0.7;
+    margin: 0;
+  }
+  @media screen and (max-width: 989px) {
+    .wholesale-categories__grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  @media screen and (max-width: 549px) {
+    .wholesale-categories {
+      padding: 4rem 0;
+    }
+    .wholesale-categories__grid {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+    }
+    .wholesale-categories__title {
+      font-size: 2.2rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="wholesale-categories color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="wholesale-categories__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <h2 class="wholesale-categories__title">{{ section.settings.title }}</h2>
+      <p class="wholesale-categories__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    <div class="wholesale-categories__grid"
+      {% if settings.animations_reveal_on_scroll %} data-cascade {% endif %}
+    >
+      {%- for block in section.blocks -%}
+        <a href="{{ block.settings.link }}" class="wholesale-category-card{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {{ block.shopify_attributes }}
+          {% if settings.animations_reveal_on_scroll %}style="--animation-order: {{ forloop.index }};"{% endif %}
+        >
+          <div class="wholesale-category-card__image">
+            {%- if block.settings.image != blank -%}
+              {{ block.settings.image | image_url: width: 800 | image_tag: loading: 'lazy', widths: '400, 600, 800', sizes: '(min-width: 990px) 33vw, (min-width: 550px) 50vw, 100vw' }}
+            {%- elsif block.settings.asset_image != blank -%}
+              <img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.title }}" loading="lazy" width="800" height="600">
+            {%- else -%}
+              {{ 'collection-apparel-1' | placeholder_svg_tag: 'placeholder-svg' }}
+            {%- endif -%}
+            <div class="wholesale-category-card__brand">
+              <img src="{{ 'loopslink-logo.svg' | asset_url }}" alt="Loopslink Inc." loading="lazy">
+            </div>
+          </div>
+          <div class="wholesale-category-card__content">
+            <h3 class="wholesale-category-card__name">{{ block.settings.title }}</h3>
+            <p class="wholesale-category-card__desc">{{ block.settings.description }}</p>
+          </div>
+        </a>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Product Categories",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 8,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Browse Our Product Catalog",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Quality wholesale textiles and apparel for businesses of all sizes",
+      "label": "Subtitle"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "category",
+      "name": "Category",
+      "settings": [
+        {
+          "type": "image_picker",
+          "id": "image",
+          "label": "Image (upload)"
+        },
+        {
+          "type": "text",
+          "id": "asset_image",
+          "label": "Asset image filename (fallback)",
+          "info": "Filename from theme assets, e.g. cat-socks.jpg"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Category",
+          "label": "Title"
+        },
+        {
+          "type": "text",
+          "id": "description",
+          "default": "Browse our selection",
+          "label": "Description"
+        },
+        {
+          "type": "url",
+          "id": "link",
+          "label": "Link"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Product Categories",
+      "blocks": [
+        { "type": "category", "settings": { "title": "Socks", "description": "Sport, diabetic, dress & more", "asset_image": "cat-socks.jpg" } },
+        { "type": "category", "settings": { "title": "T-Shirts", "description": "Bulk t-shirts for businesses", "asset_image": "cat-tshirts.jpg" } },
+        { "type": "category", "settings": { "title": "Hosiery", "description": "Quality hosiery products", "asset_image": "cat-hosiery.jpg" } },
+        { "type": "category", "settings": { "title": "Fleece Pants", "description": "Comfortable fleece bottoms", "asset_image": "cat-fleece.jpg" } },
+        { "type": "category", "settings": { "title": "Sweatshirts & Hoodies", "description": "Winter essentials in bulk", "asset_image": "cat-hoodie.jpg" } },
+        { "type": "category", "settings": { "title": "Undergarments", "description": "Boxers, briefs & more", "asset_image": "cat-undergarments.jpg" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

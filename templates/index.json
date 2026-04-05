@@ -1,0 +1,188 @@
+{
+  "sections": {
+    "wholesale_hero": {
+      "type": "wholesale-hero",
+      "settings": {
+        "subtitle": "Wholesale Textile Distributor",
+        "title": "Your Trusted Wholesale Textile Partner for 30+ Years",
+        "description": "Loopslink Inc. is a leading wholesale distributor of quality textiles and apparel. From socks to hoodies, we supply businesses with bulk orders at competitive wholesale pricing.",
+        "button_label": "Request a Quote",
+        "button_link": "/pages/contact"
+      }
+    },
+    "wholesale_categories": {
+      "type": "wholesale-categories",
+      "blocks": {
+        "cat_socks": {
+          "type": "category",
+          "settings": {
+            "asset_image": "cat-socks.jpg",
+            "title": "Socks",
+            "description": "Sport socks, diabetic socks, dress socks & more",
+            "link": "shopify://pages/socks"
+          }
+        },
+        "cat_tshirts": {
+          "type": "category",
+          "settings": {
+            "asset_image": "cat-tshirts.jpg",
+            "title": "T-Shirts",
+            "description": "Bulk t-shirts for businesses of all sizes",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_hosiery": {
+          "type": "category",
+          "settings": {
+            "asset_image": "cat-hosiery.jpg",
+            "title": "Hosiery",
+            "description": "Quality hosiery items in bulk quantities",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_fleece": {
+          "type": "category",
+          "settings": {
+            "asset_image": "cat-fleece.jpg",
+            "title": "Fleece Pants",
+            "description": "Comfortable fleece bottoms wholesale",
+            "link": "shopify://collections/all"
+          }
+        },
+        "cat_winter": {
+          "type": "category",
+          "settings": {
+            "asset_image": "cat-hoodie.jpg",
+            "title": "Sweatshirts & Hoodies",
+            "description": "Winter essentials in bulk quantities",
+            "link": "shopify://pages/winter-collection"
+          }
+        },
+        "cat_undergarments": {
+          "type": "category",
+          "settings": {
+            "asset_image": "cat-undergarments.jpg",
+            "title": "Undergarments",
+            "description": "Boxers, boxer shorts, briefs & more",
+            "link": "shopify://pages/undergarments"
+          }
+        }
+      },
+      "block_order": [
+        "cat_socks",
+        "cat_tshirts",
+        "cat_hosiery",
+        "cat_fleece",
+        "cat_winter",
+        "cat_undergarments"
+      ],
+      "settings": {
+        "title": "Browse Our Product Catalog",
+        "subtitle": "Quality wholesale textiles and apparel for businesses of all sizes",
+        "color_scheme": "scheme-1"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "title": "Featured Products",
+        "heading_size": "h1",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "collection": "all",
+        "products_to_show": 8,
+        "columns_desktop": 4,
+        "full_width": false,
+        "show_view_all": true,
+        "view_all_style": "solid",
+        "enable_desktop_slider": false,
+        "color_scheme": "scheme-1",
+        "image_ratio": "adapt",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": true,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": true,
+        "padding_top": 44,
+        "padding_bottom": 36
+      }
+    },
+    "wholesale_why_us": {
+      "type": "wholesale-why-us",
+      "blocks": {
+        "feature_experience": {
+          "type": "feature",
+          "settings": {
+            "icon": "experience",
+            "title": "30+ Years of Experience",
+            "description": "Three decades of trusted wholesale textile distribution to businesses nationwide."
+          }
+        },
+        "feature_pricing": {
+          "type": "feature",
+          "settings": {
+            "icon": "pricing",
+            "title": "Competitive Bulk Pricing",
+            "description": "Wholesale rates designed for businesses ordering in volume. The more you order, the more you save."
+          }
+        },
+        "feature_range": {
+          "type": "feature",
+          "settings": {
+            "icon": "range",
+            "title": "Wide Product Range",
+            "description": "From socks to sweatshirts, we carry a comprehensive selection of quality textile products."
+          }
+        },
+        "feature_shipping": {
+          "type": "feature",
+          "settings": {
+            "icon": "shipping",
+            "title": "Reliable Supply Chain",
+            "description": "Consistent inventory and fast shipping so your business never runs out of stock."
+          }
+        },
+        "feature_support": {
+          "type": "feature",
+          "settings": {
+            "icon": "support",
+            "title": "Dedicated Account Support",
+            "description": "Personal account managers who understand your business needs and provide tailored service."
+          }
+        }
+      },
+      "block_order": [
+        "feature_experience",
+        "feature_pricing",
+        "feature_range",
+        "feature_shipping",
+        "feature_support"
+      ],
+      "settings": {
+        "title": "Why Choose Loopslink Inc.",
+        "subtitle": "Trusted by businesses across the country for over three decades",
+        "color_scheme": "scheme-2"
+      }
+    },
+    "wholesale_cta": {
+      "type": "wholesale-cta",
+      "settings": {
+        "title": "Ready to Place a Bulk Order?",
+        "description": "Get in touch with our team to discuss your wholesale needs. We offer competitive pricing, flexible quantities, and dedicated support for every order.",
+        "button_label": "Contact Us Today",
+        "button_link": "/pages/contact",
+        "color_scheme": "scheme-3"
+      }
+    }
+  },
+  "order": [
+    "wholesale_hero",
+    "wholesale_categories",
+    "featured_collection",
+    "wholesale_why_us",
+    "wholesale_cta"
+  ]
+}

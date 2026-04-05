@@ -1,0 +1,41 @@
+{% comment %}
+  Renders a wholesale inquiry button instead of buy/cart buttons.
+  Links to the contact page with the product name pre-filled.
+
+  Accepts:
+  - product: {Object} product object.
+  - block: {Object} passing the block information.
+  - section_id: {String} id of section to which this snippet belongs.
+
+  Usage:
+  {% render 'buy-buttons', block: block, product: product, section_id: section.id %}
+{% endcomment %}
+<div {{ block.shopify_attributes }}>
+  {%- if product != blank -%}
+    <div class="product-form">
+      <div class="product-form__buttons">
+        <a
+          href="/pages/contact?product={{ product.title | url_encode }}"
+          class="product-form__submit button button--full-width button--primary"
+          id="InquiryButton-{{ section_id }}"
+        >
+          <span>Inquire About This Product</span>
+        </a>
+      </div>
+      <p class="wholesale-notice" style="margin-top: 1.5rem; font-size: 1.3rem; opacity: 0.75; text-align: center;">
+        Minimum order quantities apply. Contact us for wholesale pricing and availability.
+      </p>
+    </div>
+  {%- else -%}
+    <div class="product-form">
+      <div class="product-form__buttons">
+        <a
+          href="/pages/contact"
+          class="product-form__submit button button--full-width button--primary"
+        >
+          <span>Request a Quote</span>
+        </a>
+      </div>
+    </div>
+  {%- endif -%}
+</div>

@@ -1,0 +1,117 @@
+{%- style -%}
+  .wholesale-cta {
+    padding: 6rem 0;
+    text-align: center;
+  }
+  .wholesale-cta__inner {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 5rem 3rem;
+    border-radius: 4px;
+  }
+  .wholesale-cta__title {
+    font-size: 2.6rem;
+    font-weight: 700;
+    margin: 0 0 1.2rem;
+  }
+  .wholesale-cta__description {
+    font-size: 1.6rem;
+    opacity: 0.8;
+    margin: 0 0 2.5rem;
+    line-height: 1.6;
+  }
+  .wholesale-cta__button {
+    display: inline-block;
+    padding: 1.5rem 3.5rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    letter-spacing: 0.1rem;
+    text-transform: uppercase;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .wholesale-cta--dark .wholesale-cta__button {
+    background: #fff;
+    color: #1a1f2e;
+  }
+  .wholesale-cta--dark .wholesale-cta__button:hover {
+    background: #334fb4;
+    color: #fff;
+  }
+  .wholesale-cta--light .wholesale-cta__button {
+    background: #1a1f2e;
+    color: #fff;
+  }
+  .wholesale-cta--light .wholesale-cta__button:hover {
+    background: #334fb4;
+    color: #fff;
+  }
+  @media screen and (max-width: 749px) {
+    .wholesale-cta {
+      padding: 4rem 0;
+    }
+    .wholesale-cta__inner {
+      padding: 3rem 2rem;
+    }
+    .wholesale-cta__title {
+      font-size: 2rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="wholesale-cta wholesale-cta--{% if section.settings.color_scheme == 'scheme-3' or section.settings.color_scheme == 'scheme-4' %}dark{% else %}light{% endif %} color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="wholesale-cta__inner{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <h2 class="wholesale-cta__title">{{ section.settings.title }}</h2>
+      <p class="wholesale-cta__description">{{ section.settings.description }}</p>
+      {%- if section.settings.button_label != blank -%}
+        <a href="{{ section.settings.button_link }}" class="wholesale-cta__button">{{ section.settings.button_label }}</a>
+      {%- endif -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Wholesale CTA",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Ready to Place a Bulk Order?",
+      "label": "Heading"
+    },
+    {
+      "type": "textarea",
+      "id": "description",
+      "default": "Get in touch with our team to discuss your wholesale needs. We offer competitive pricing, flexible quantities, and dedicated support for every order.",
+      "label": "Description"
+    },
+    {
+      "type": "text",
+      "id": "button_label",
+      "default": "Contact Us Today",
+      "label": "Button label"
+    },
+    {
+      "type": "url",
+      "id": "button_link",
+      "default": "/pages/contact",
+      "label": "Button link"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-3"
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wholesale CTA"
+    }
+  ]
+}
+{% endschema %}

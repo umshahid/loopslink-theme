@@ -1,0 +1,324 @@
+{{ 'section-contact-form.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .section-{{ section.id }}-padding {
+    padding-top: {{ section.settings.padding_top | times: 0.75 | round: 0 }}px;
+    padding-bottom: {{ section.settings.padding_bottom | times: 0.75 | round: 0 }}px;
+  }
+  @media screen and (min-width: 750px) {
+    .section-{{ section.id }}-padding {
+      padding-top: {{ section.settings.padding_top }}px;
+      padding-bottom: {{ section.settings.padding_bottom }}px;
+    }
+  }
+  .wholesale-inquiry__intro {
+    text-align: center;
+    margin-bottom: 3rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .wholesale-inquiry__intro p {
+    font-size: 1.5rem;
+    opacity: 0.75;
+    line-height: 1.7;
+  }
+  .wholesale-inquiry__fields-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+  }
+  @media screen and (max-width: 549px) {
+    .wholesale-inquiry__fields-row {
+      grid-template-columns: 1fr;
+    }
+  }
+  .wholesale-inquiry__checkboxes {
+    margin: 1.5rem 0;
+  }
+  .wholesale-inquiry__checkboxes-label {
+    font-size: 1.4rem;
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  .wholesale-inquiry__checkbox-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.8rem;
+  }
+  @media screen and (max-width: 549px) {
+    .wholesale-inquiry__checkbox-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  .wholesale-inquiry__checkbox-item {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    font-size: 1.4rem;
+  }
+  .wholesale-inquiry__checkbox-item input[type="checkbox"] {
+    width: 1.6rem;
+    height: 1.6rem;
+    accent-color: #334fb4;
+  }
+  .wholesale-inquiry__notice {
+    margin-top: 2rem;
+    padding: 1.5rem;
+    background: rgba(51, 79, 180, 0.06);
+    border-left: 3px solid #334fb4;
+    font-size: 1.3rem;
+    line-height: 1.6;
+    opacity: 0.8;
+  }
+{%- endstyle -%}
+
+<div class="color-{{ section.settings.color_scheme }} gradient">
+  <div class="contact page-width page-width--narrow section-{{ section.id }}-padding">
+    {%- if section.settings.heading != blank -%}
+      <h2 class="title title-wrapper--no-top-margin inline-richtext {{ section.settings.heading_size }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+        {{ section.settings.heading }}
+      </h2>
+    {%- endif -%}
+
+    <div class="wholesale-inquiry__intro{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <p>Tell us about your business needs and we'll get back to you with wholesale pricing and availability within one business day.</p>
+    </div>
+
+    {%- liquid
+      assign contact_form_class = 'isolate'
+      if settings.animations_reveal_on_scroll
+        assign contact_form_class = 'isolate scroll-trigger animate--slide-in'
+      endif
+    -%}
+    {%- form 'contact', id: 'WholesaleInquiryForm', class: contact_form_class -%}
+      {%- if form.posted_successfully? -%}
+        <h2 class="form-status form-status-list form__message" tabindex="-1" autofocus>
+          {{- 'icon-success.svg' | inline_asset_content -}}
+          Thank you for your inquiry! Our team will review your request and respond within one business day.
+        </h2>
+      {%- elsif form.errors -%}
+        <div class="form__message">
+          <h2 class="form-status caption-large text-body" role="alert" tabindex="-1" autofocus>
+            {{- 'icon-error.svg' | inline_asset_content -}}
+            {{ 'templates.contact.form.error_heading' | t }}
+          </h2>
+        </div>
+        <ul class="form-status-list caption-large" role="list">
+          <li>
+            <a href="#WholesaleInquiryForm-email" class="link">
+              {{ form.errors.translated_fields.email | capitalize }}
+              {{ form.errors.messages.email }}
+            </a>
+          </li>
+        </ul>
+      {%- endif -%}
+
+      <div class="wholesale-inquiry__fields-row">
+        <div class="field">
+          <input
+            class="field__input"
+            type="text"
+            id="WholesaleInquiryForm-company"
+            name="contact[Company Name]"
+            placeholder="Company Name"
+            required
+          >
+          <label class="field__label" for="WholesaleInquiryForm-company">Company Name <span aria-hidden="true">*</span></label>
+        </div>
+        <div class="field">
+          <input
+            class="field__input"
+            autocomplete="name"
+            type="text"
+            id="WholesaleInquiryForm-name"
+            name="contact[{{ 'templates.contact.form.name' | t }}]"
+            value="{% if form.name %}{{ form.name }}{% elsif customer %}{{ customer.name }}{% endif %}"
+            placeholder="Contact Person Name"
+            required
+          >
+          <label class="field__label" for="WholesaleInquiryForm-name">Contact Person <span aria-hidden="true">*</span></label>
+        </div>
+      </div>
+
+      <div class="wholesale-inquiry__fields-row">
+        <div class="field field--with-error">
+          <input
+            autocomplete="email"
+            type="email"
+            id="WholesaleInquiryForm-email"
+            class="field__input"
+            name="contact[email]"
+            spellcheck="false"
+            autocapitalize="off"
+            value="{% if form.email %}{{ form.email }}{% elsif customer %}{{ customer.email }}{% endif %}"
+            aria-required="true"
+            {% if form.errors contains 'email' %}
+              aria-invalid="true"
+              aria-describedby="WholesaleInquiryForm-email-error"
+            {% endif %}
+            placeholder="Email Address"
+            required
+          >
+          <label class="field__label" for="WholesaleInquiryForm-email">
+            Email Address <span aria-hidden="true">*</span>
+          </label>
+          {%- if form.errors contains 'email' -%}
+            <small class="contact__field-error" id="WholesaleInquiryForm-email-error">
+              <span class="visually-hidden">{{ 'accessibility.error' | t }}</span>
+              <span class="form__message">
+                <span class="svg-wrapper">{{- 'icon-error.svg' | inline_asset_content -}}</span>
+                {{- form.errors.translated_fields.email | capitalize }} {{ form.errors.messages.email -}}
+              </span>
+            </small>
+          {%- endif -%}
+        </div>
+        <div class="field">
+          <input
+            type="tel"
+            id="WholesaleInquiryForm-phone"
+            class="field__input"
+            autocomplete="tel"
+            name="contact[Phone]"
+            pattern="[0-9\-\+\(\) ]*"
+            placeholder="Phone Number"
+          >
+          <label class="field__label" for="WholesaleInquiryForm-phone">Phone Number</label>
+        </div>
+      </div>
+
+      <div class="wholesale-inquiry__checkboxes">
+        <span class="wholesale-inquiry__checkboxes-label">Products of Interest</span>
+        <div class="wholesale-inquiry__checkbox-grid">
+          <label class="wholesale-inquiry__checkbox-item">
+            <input type="checkbox" name="contact[Products - Socks]" value="Yes"> Socks
+          </label>
+          <label class="wholesale-inquiry__checkbox-item">
+            <input type="checkbox" name="contact[Products - T-Shirts]" value="Yes"> T-Shirts
+          </label>
+          <label class="wholesale-inquiry__checkbox-item">
+            <input type="checkbox" name="contact[Products - Hosiery]" value="Yes"> Hosiery
+          </label>
+          <label class="wholesale-inquiry__checkbox-item">
+            <input type="checkbox" name="contact[Products - Fleece Pants]" value="Yes"> Fleece Pants
+          </label>
+          <label class="wholesale-inquiry__checkbox-item">
+            <input type="checkbox" name="contact[Products - Sweatshirts & Hoodies]" value="Yes"> Sweatshirts & Hoodies
+          </label>
+          <label class="wholesale-inquiry__checkbox-item">
+            <input type="checkbox" name="contact[Products - Undergarments]" value="Yes"> Undergarments
+          </label>
+        </div>
+      </div>
+
+      <div class="field">
+        <input
+          class="field__input"
+          type="text"
+          id="WholesaleInquiryForm-quantity"
+          name="contact[Estimated Order Size]"
+          placeholder="e.g., 500 units, 1000+ pieces"
+        >
+        <label class="field__label" for="WholesaleInquiryForm-quantity">Estimated Quantity / Order Size</label>
+      </div>
+
+      <div class="field">
+        <textarea
+          rows="6"
+          id="WholesaleInquiryForm-body"
+          class="text-area field__input"
+          name="contact[{{ 'templates.contact.form.comment' | t }}]"
+          placeholder="Tell us about your specific requirements, preferred styles, sizes, or any other details..."
+        >{{- form.body -}}</textarea>
+        <label class="form__label field__label" for="WholesaleInquiryForm-body">
+          Message / Additional Details
+        </label>
+      </div>
+
+      <div class="contact__button">
+        <button type="submit" class="button">
+          Submit Inquiry
+        </button>
+      </div>
+
+      <div class="wholesale-inquiry__notice">
+        <strong>Wholesale Only</strong> — Loopslink Inc. serves businesses exclusively. Minimum order quantities apply to all products. We'll respond with pricing and availability based on your specific needs.
+      </div>
+    {%- endform -%}
+  </div>
+</div>
+
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    var urlParams = new URLSearchParams(window.location.search);
+    var product = urlParams.get('product');
+    if (product) {
+      var bodyField = document.getElementById('WholesaleInquiryForm-body');
+      if (bodyField && !bodyField.value.trim()) {
+        bodyField.value = 'I am interested in: ' + decodeURIComponent(product) + '\n\nPlease provide wholesale pricing and availability.';
+      }
+    }
+  });
+</script>
+
+{% schema %}
+{
+  "name": "Wholesale Inquiry Form",
+  "tag": "section",
+  "class": "section",
+  "disabled_on": {
+    "groups": ["header", "footer"]
+  },
+  "settings": [
+    {
+      "type": "inline_richtext",
+      "id": "heading",
+      "default": "Wholesale Inquiry",
+      "label": "Heading"
+    },
+    {
+      "type": "select",
+      "id": "heading_size",
+      "options": [
+        { "value": "h2", "label": "Small" },
+        { "value": "h1", "label": "Medium" },
+        { "value": "h0", "label": "Large" }
+      ],
+      "default": "h1",
+      "label": "Heading size"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-1"
+    },
+    {
+      "type": "range",
+      "id": "padding_top",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Top padding",
+      "default": 36
+    },
+    {
+      "type": "range",
+      "id": "padding_bottom",
+      "min": 0,
+      "max": 100,
+      "step": 4,
+      "unit": "px",
+      "label": "Bottom padding",
+      "default": 36
+    }
+  ],
+  "presets": [
+    {
+      "name": "Wholesale Inquiry Form"
+    }
+  ]
+}
+{% endschema %}

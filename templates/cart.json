@@ -1,0 +1,43 @@
+{
+  "sections": {
+    "main": {
+      "type": "rich-text",
+      "blocks": {
+        "heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Wholesale Inquiries Only",
+            "heading_size": "h1"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Loopslink Inc. operates on a wholesale inquiry basis. We do not process orders through an online cart.</p><p>To place a bulk order, please contact our team directly and we will provide you with wholesale pricing and availability.</p>"
+          }
+        },
+        "button": {
+          "type": "button",
+          "settings": {
+            "button_label": "Request a Quote",
+            "button_link": "/pages/contact",
+            "button_style_secondary": false,
+            "button_label_2": "Browse Catalog",
+            "button_link_2": "/collections/all",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"],
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      }
+    }
+  },
+  "order": ["main"]
+}

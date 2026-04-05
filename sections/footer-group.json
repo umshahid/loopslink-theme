@@ -1,0 +1,62 @@
+{
+  "name": "t:sections.footer.name",
+  "type": "footer",
+  "sections": {
+    "footer": {
+      "type": "footer",
+      "blocks": {
+        "brand_info": {
+          "type": "text",
+          "settings": {
+            "heading": "Loopslink Inc.",
+            "subtext": "<p>Your trusted wholesale textile distributor for over 30 years. We supply businesses with quality socks, t-shirts, hosiery, fleece, sweatshirts, and undergarments at competitive bulk pricing.</p>"
+          }
+        },
+        "quick_links": {
+          "type": "link_list",
+          "settings": {
+            "heading": "Quick Links",
+            "menu": "main-menu"
+          }
+        },
+        "contact_info": {
+          "type": "text",
+          "settings": {
+            "heading": "Contact Us",
+            "subtext": "<p>Have questions about wholesale orders?<br><br><strong>Email:</strong> info@loopslinkinc.com<br><strong>Phone:</strong> (555) 123-4567<br><br><em>Business Hours:</em><br>Mon-Fri: 9:00 AM - 5:00 PM EST</p>"
+          }
+        },
+        "wholesale_notice": {
+          "type": "text",
+          "settings": {
+            "heading": "",
+            "subtext": "<p><strong>Wholesale Only</strong> — Minimum Order Quantities Apply<br>Loopslink Inc. serves businesses exclusively. All orders are processed offline after inquiry. Contact us for pricing and availability.</p>"
+          }
+        }
+      },
+      "block_order": [
+        "brand_info",
+        "quick_links",
+        "contact_info",
+        "wholesale_notice"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "newsletter_enable": false,
+        "newsletter_heading": "",
+        "enable_follow_on_shop": false,
+        "show_social": true,
+        "enable_country_selector": false,
+        "enable_language_selector": false,
+        "payment_enable": false,
+        "show_policy": true,
+        "margin_top": 0,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
+    }
+  },
+  "order": [
+    "footer"
+  ]
+}

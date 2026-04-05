@@ -1,0 +1,185 @@
+{%- style -%}
+  .wholesale-why-us {
+    padding: 6rem 0;
+  }
+  .wholesale-why-us__header {
+    text-align: center;
+    margin-bottom: 4rem;
+  }
+  .wholesale-why-us__title {
+    font-size: 2.8rem;
+    font-weight: 700;
+    margin: 0 0 1rem;
+  }
+  .wholesale-why-us__subtitle {
+    font-size: 1.5rem;
+    opacity: 0.7;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  .wholesale-why-us__grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 3rem;
+  }
+  .wholesale-why-us__item {
+    text-align: center;
+    padding: 2rem 1.5rem;
+  }
+  .wholesale-why-us__icon {
+    width: 64px;
+    height: 64px;
+    margin: 0 auto 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: rgba(51, 79, 180, 0.1);
+  }
+  .wholesale-why-us__icon svg {
+    width: 28px;
+    height: 28px;
+    stroke: #334fb4;
+  }
+  .wholesale-why-us__item-title {
+    font-size: 1.6rem;
+    font-weight: 700;
+    margin: 0 0 0.8rem;
+  }
+  .wholesale-why-us__item-desc {
+    font-size: 1.4rem;
+    opacity: 0.7;
+    margin: 0;
+    line-height: 1.6;
+  }
+  @media screen and (max-width: 989px) {
+    .wholesale-why-us__grid {
+      grid-template-columns: repeat(2, 1fr);
+      gap: 2rem;
+    }
+  }
+  @media screen and (max-width: 549px) {
+    .wholesale-why-us {
+      padding: 4rem 0;
+    }
+    .wholesale-why-us__grid {
+      grid-template-columns: 1fr;
+    }
+    .wholesale-why-us__title {
+      font-size: 2.2rem;
+    }
+  }
+{%- endstyle -%}
+
+<section class="wholesale-why-us color-{{ section.settings.color_scheme }} gradient">
+  <div class="page-width">
+    <div class="wholesale-why-us__header{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}">
+      <h2 class="wholesale-why-us__title">{{ section.settings.title }}</h2>
+      <p class="wholesale-why-us__subtitle">{{ section.settings.subtitle }}</p>
+    </div>
+    <div class="wholesale-why-us__grid"
+      {% if settings.animations_reveal_on_scroll %} data-cascade {% endif %}
+    >
+      {%- for block in section.blocks -%}
+        <div class="wholesale-why-us__item{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+          {{ block.shopify_attributes }}
+          {% if settings.animations_reveal_on_scroll %}style="--animation-order: {{ forloop.index }};"{% endif %}
+        >
+          <div class="wholesale-why-us__icon">
+            {%- case block.settings.icon -%}
+              {%- when 'experience' -%}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+              {%- when 'pricing' -%}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/></svg>
+              {%- when 'range' -%}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+              {%- when 'shipping' -%}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><rect x="1" y="3" width="15" height="13"/><polygon points="16 8 20 8 23 11 23 16 16 16 16 8"/><circle cx="5.5" cy="18.5" r="2.5"/><circle cx="18.5" cy="18.5" r="2.5"/></svg>
+              {%- when 'support' -%}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+              {%- else -%}
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+            {%- endcase -%}
+          </div>
+          <h3 class="wholesale-why-us__item-title">{{ block.settings.title }}</h3>
+          <p class="wholesale-why-us__item-desc">{{ block.settings.description }}</p>
+        </div>
+      {%- endfor -%}
+    </div>
+  </div>
+</section>
+
+{% schema %}
+{
+  "name": "Why Choose Us",
+  "tag": "section",
+  "class": "section",
+  "max_blocks": 6,
+  "settings": [
+    {
+      "type": "text",
+      "id": "title",
+      "default": "Why Choose Loopslink Inc.",
+      "label": "Heading"
+    },
+    {
+      "type": "text",
+      "id": "subtitle",
+      "default": "Trusted by businesses across the country for over three decades",
+      "label": "Subtitle"
+    },
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-2"
+    }
+  ],
+  "blocks": [
+    {
+      "type": "feature",
+      "name": "Feature",
+      "settings": [
+        {
+          "type": "select",
+          "id": "icon",
+          "options": [
+            { "value": "experience", "label": "Shield / Experience" },
+            { "value": "pricing", "label": "Dollar / Pricing" },
+            { "value": "range", "label": "Briefcase / Range" },
+            { "value": "shipping", "label": "Truck / Shipping" },
+            { "value": "support", "label": "Person / Support" },
+            { "value": "check", "label": "Checkmark" }
+          ],
+          "default": "check",
+          "label": "Icon"
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "default": "Feature",
+          "label": "Title"
+        },
+        {
+          "type": "textarea",
+          "id": "description",
+          "default": "Description of this feature",
+          "label": "Description"
+        }
+      ]
+    }
+  ],
+  "presets": [
+    {
+      "name": "Why Choose Us",
+      "blocks": [
+        { "type": "feature", "settings": { "icon": "experience", "title": "30+ Years of Experience", "description": "Three decades of trusted wholesale textile distribution to businesses nationwide." } },
+        { "type": "feature", "settings": { "icon": "pricing", "title": "Competitive Bulk Pricing", "description": "Wholesale rates designed for businesses ordering in volume. The more you order, the more you save." } },
+        { "type": "feature", "settings": { "icon": "range", "title": "Wide Product Range", "description": "From socks to sweatshirts, we carry a comprehensive selection of quality textile products." } },
+        { "type": "feature", "settings": { "icon": "shipping", "title": "Reliable Supply Chain", "description": "Consistent inventory and fast shipping so your business never runs out of stock." } },
+        { "type": "feature", "settings": { "icon": "support", "title": "Dedicated Account Support", "description": "Personal account managers who understand your business needs and provide tailored service." } }
+      ]
+    }
+  ]
+}
+{% endschema %}
