@@ -1,15 +1,5 @@
 {
   "sections": {
-    "wholesale_hero": {
-      "type": "wholesale-hero",
-      "settings": {
-        "subtitle": "Wholesale Textile Distributor",
-        "title": "Your Trusted Wholesale Textile Partner for 30+ Years",
-        "description": "Loopslink Inc. is a leading wholesale distributor of quality textiles and apparel. From socks to hoodies, we supply businesses with bulk orders at competitive wholesale pricing.",
-        "button_label": "Request a Quote",
-        "button_link": "/pages/contact"
-      }
-    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -40,7 +30,6 @@
     }
   },
   "order": [
-    "wholesale_hero",
     "featured_collection"
   ]
 }
