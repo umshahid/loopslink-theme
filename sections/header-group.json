@@ -8,8 +8,8 @@
         "announcement-bar-0": {
           "type": "announcement",
           "settings": {
-            "text": "WHOLESALE ONLY — Serving Businesses for 30+ Years | <a href=\"/pages/contact\">Request a Quote</a>",
-            "link": ""
+            "text": "WHOLESALE ONLY — Serving Businesses for 30+ Years | Request a Quote",
+            "link": "/pages/contact"
           }
         }
       },
