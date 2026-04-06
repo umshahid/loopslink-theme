@@ -1,85 +1,148 @@
 {
   "sections": {
-    "wholesale_hero": {
-      "type": "wholesale-hero",
+    "image_banner": {
+      "type": "image-banner",
       "settings": {
-        "subtitle": "Wholesale Textile Distributor",
-        "title": "Your Trusted Wholesale Textile Partner for 30+ Years",
-        "description": "Loopslink Inc. is a leading wholesale distributor of quality textiles and apparel. From socks to hoodies, we supply businesses with bulk orders at competitive wholesale pricing.",
-        "button_label": "Request a Quote",
-        "button_link": "/pages/contact"
-      }
-    },
-    "wholesale_categories": {
-      "type": "wholesale-categories",
+        "image_overlay_opacity": 60,
+        "image_height": "large",
+        "desktop_content_position": "middle-center",
+        "show_text_box": false,
+        "desktop_content_alignment": "center",
+        "color_scheme": "scheme-4",
+        "image_behavior": "none",
+        "mobile_content_alignment": "center",
+        "stack_images_on_mobile": true,
+        "show_text_below": false
+      },
       "blocks": {
-        "cat_socks": {
-          "type": "category",
+        "heading": {
+          "type": "heading",
           "settings": {
-            "asset_image": "cat-socks.jpg",
+            "heading": "Your Trusted Wholesale Textile Partner for 30+ Years",
+            "heading_size": "h0"
+          }
+        },
+        "text": {
+          "type": "text",
+          "settings": {
+            "text": "Loopslink Inc. is a leading wholesale distributor of quality textiles and apparel. From socks to hoodies, we supply businesses with bulk orders at competitive wholesale pricing.",
+            "text_style": "body"
+          }
+        },
+        "button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Request a Quote",
+            "button_link_1": "/pages/contact",
+            "button_style_secondary_1": false,
+            "button_label_2": "Browse Catalog",
+            "button_link_2": "/collections/all",
+            "button_style_secondary_2": true
+          }
+        }
+      },
+      "block_order": ["heading", "text", "button"]
+    },
+    "categories_heading": {
+      "type": "rich-text",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-1",
+        "full_width": true,
+        "padding_top": 52,
+        "padding_bottom": 0
+      },
+      "blocks": {
+        "cat_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Browse Our Product Catalog"
+          }
+        },
+        "cat_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Quality wholesale textiles and apparel for businesses of all sizes</p>"
+          }
+        }
+      },
+      "block_order": ["cat_heading", "cat_text"]
+    },
+    "categories": {
+      "type": "multicolumn",
+      "blocks": {
+        "col_socks": {
+          "type": "column",
+          "settings": {
             "title": "Socks",
-            "description": "Sport socks, diabetic socks, dress socks & more",
+            "text": "<p>Sport socks, diabetic socks, dress socks & more</p>",
+            "link_label": "View Collection",
             "link": "/pages/socks"
           }
         },
-        "cat_tshirts": {
-          "type": "category",
+        "col_tshirts": {
+          "type": "column",
           "settings": {
-            "asset_image": "cat-tshirts.jpg",
             "title": "T-Shirts",
-            "description": "Bulk t-shirts for businesses of all sizes",
+            "text": "<p>Bulk t-shirts for businesses of all sizes</p>",
+            "link_label": "View Collection",
             "link": "/collections/all"
           }
         },
-        "cat_hosiery": {
-          "type": "category",
+        "col_hosiery": {
+          "type": "column",
           "settings": {
-            "asset_image": "cat-hosiery.jpg",
             "title": "Hosiery",
-            "description": "Quality hosiery items in bulk quantities",
+            "text": "<p>Quality hosiery items in bulk quantities</p>",
+            "link_label": "View Collection",
             "link": "/collections/all"
           }
         },
-        "cat_fleece": {
-          "type": "category",
+        "col_fleece": {
+          "type": "column",
           "settings": {
-            "asset_image": "cat-fleece.jpg",
             "title": "Fleece Pants",
-            "description": "Comfortable fleece bottoms wholesale",
+            "text": "<p>Comfortable fleece bottoms wholesale</p>",
+            "link_label": "View Collection",
             "link": "/collections/all"
           }
         },
-        "cat_winter": {
-          "type": "category",
+        "col_hoodies": {
+          "type": "column",
           "settings": {
-            "asset_image": "cat-hoodie.jpg",
             "title": "Sweatshirts & Hoodies",
-            "description": "Winter essentials in bulk quantities",
+            "text": "<p>Winter essentials in bulk quantities</p>",
+            "link_label": "View Collection",
             "link": "/pages/winter-collection"
           }
         },
-        "cat_undergarments": {
-          "type": "category",
+        "col_undergarments": {
+          "type": "column",
           "settings": {
-            "asset_image": "cat-undergarments.jpg",
             "title": "Undergarments",
-            "description": "Boxers, boxer shorts, briefs & more",
+            "text": "<p>Boxers, boxer shorts, briefs & more</p>",
+            "link_label": "View Collection",
             "link": "/pages/undergarments"
           }
         }
       },
-      "block_order": [
-        "cat_socks",
-        "cat_tshirts",
-        "cat_hosiery",
-        "cat_fleece",
-        "cat_winter",
-        "cat_undergarments"
-      ],
+      "block_order": ["col_socks", "col_tshirts", "col_hosiery", "col_fleece", "col_hoodies", "col_undergarments"],
       "settings": {
-        "title": "Browse Our Product Catalog",
-        "subtitle": "Quality wholesale textiles and apparel for businesses of all sizes",
-        "color_scheme": "scheme-1"
+        "title": "",
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 3,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-1",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 20,
+        "padding_bottom": 36
       }
     },
     "featured_collection": {
@@ -110,79 +173,117 @@
         "padding_bottom": 36
       }
     },
-    "wholesale_why_us": {
-      "type": "wholesale-why-us",
+    "why_us": {
+      "type": "multicolumn",
       "blocks": {
-        "feature_experience": {
-          "type": "feature",
+        "exp": {
+          "type": "column",
           "settings": {
-            "icon": "experience",
             "title": "30+ Years of Experience",
-            "description": "Three decades of trusted wholesale textile distribution to businesses nationwide."
+            "text": "<p>Three decades of trusted wholesale textile distribution to businesses nationwide.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "feature_pricing": {
-          "type": "feature",
+        "pricing": {
+          "type": "column",
           "settings": {
-            "icon": "pricing",
             "title": "Competitive Bulk Pricing",
-            "description": "Wholesale rates designed for businesses ordering in volume. The more you order, the more you save."
+            "text": "<p>Wholesale rates designed for businesses ordering in volume. The more you order, the more you save.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "feature_range": {
-          "type": "feature",
+        "range": {
+          "type": "column",
           "settings": {
-            "icon": "range",
             "title": "Wide Product Range",
-            "description": "From socks to sweatshirts, we carry a comprehensive selection of quality textile products."
+            "text": "<p>From socks to sweatshirts, we carry a comprehensive selection of quality textile products.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "feature_shipping": {
-          "type": "feature",
+        "shipping": {
+          "type": "column",
           "settings": {
-            "icon": "shipping",
             "title": "Reliable Supply Chain",
-            "description": "Consistent inventory and fast shipping so your business never runs out of stock."
+            "text": "<p>Consistent inventory and fast shipping so your business never runs out of stock.</p>",
+            "link_label": "",
+            "link": ""
           }
         },
-        "feature_support": {
-          "type": "feature",
+        "support": {
+          "type": "column",
           "settings": {
-            "icon": "support",
             "title": "Dedicated Account Support",
-            "description": "Personal account managers who understand your business needs and provide tailored service."
+            "text": "<p>Personal account managers who understand your business needs and provide tailored service.</p>",
+            "link_label": "",
+            "link": ""
           }
         }
       },
-      "block_order": [
-        "feature_experience",
-        "feature_pricing",
-        "feature_range",
-        "feature_shipping",
-        "feature_support"
-      ],
+      "block_order": ["exp", "pricing", "range", "shipping", "support"],
       "settings": {
         "title": "Why Choose Loopslink Inc.",
-        "subtitle": "Trusted by businesses across the country for over three decades",
-        "color_scheme": "scheme-2"
+        "heading_size": "h1",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "columns_desktop": 5,
+        "column_alignment": "center",
+        "background_style": "primary",
+        "button_label": "",
+        "button_link": "",
+        "color_scheme": "scheme-2",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 44
       }
     },
-    "wholesale_cta": {
-      "type": "wholesale-cta",
+    "cta": {
+      "type": "rich-text",
       "settings": {
-        "title": "Ready to Place a Bulk Order?",
-        "description": "Get in touch with our team to discuss your wholesale needs. We offer competitive pricing, flexible quantities, and dedicated support for every order.",
-        "button_label": "Contact Us Today",
-        "button_link": "/pages/contact",
-        "color_scheme": "scheme-3"
-      }
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 60,
+        "padding_bottom": 60
+      },
+      "blocks": {
+        "cta_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Ready to Place a Bulk Order?"
+          }
+        },
+        "cta_text": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Get in touch with our team to discuss your wholesale needs. We offer competitive pricing, flexible quantities, and dedicated support for every order.</p>"
+          }
+        },
+        "cta_button": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Contact Us Today",
+            "button_link_1": "/pages/contact",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": ["cta_heading", "cta_text", "cta_button"]
     }
   },
   "order": [
-    "wholesale_hero",
-    "wholesale_categories",
+    "image_banner",
+    "categories_heading",
+    "categories",
     "featured_collection",
-    "wholesale_why_us",
-    "wholesale_cta"
+    "why_us",
+    "cta"
   ]
 }
